@@ -291,6 +291,8 @@ function generateCardName() {
 
 function generateManaCost(color) {
     const genericMana = Math.floor(Math.random() * 5);
+    const colorMana = Math.floor(Math.random() * 3) + 1;
+    
     const colorSymbols = {
         'White': '{W}',
         'Blue': '{U}',
@@ -298,11 +300,23 @@ function generateManaCost(color) {
         'Red': '{R}',
         'Green': '{G}',
         'Colorless': '{C}',
-        'Multicolor': '{W}{U}'
+        'Multicolor': '' // Multicolor handled separately
     };
     
-    const colorMana = Math.floor(Math.random() * 3) + 1;
-    const colorSymbol = colorSymbols[color] || '';
+    let colorSymbol = colorSymbols[color] || '';
+    
+    // For multicolor, randomly pick 2 different colors
+    if (color === 'Multicolor') {
+        const colors = ['{W}', '{U}', '{B}', '{R}', '{G}'];
+        const color1 = colors[Math.floor(Math.random() * colors.length)];
+        let color2 = colors[Math.floor(Math.random() * colors.length)];
+        while (color2 === color1) {
+            color2 = colors[Math.floor(Math.random() * colors.length)];
+        }
+        colorSymbol = color1 + color2;
+        return `{${genericMana}}${colorSymbol}`;
+    }
+    
     return `{${genericMana}}${colorSymbol.repeat(colorMana)}`;
 }
 
@@ -417,8 +431,14 @@ function canPayCost(cost) {
 }
 
 function payCost(cost) {
-    // Deduct mana from pool
+    // TODO: Parse cost string and deduct from gameState.manaPool
+    // For now, just log the cost being paid
+    // Future implementation should parse symbols like {3}{U}{U} and deduct accordingly
     console.log('Paying cost:', cost);
+    // Example future implementation:
+    // - Parse {3} as 3 generic mana
+    // - Parse {U} as 1 blue mana
+    // - Deduct from gameState.manaPool.U, gameState.manaPool.C, etc.
 }
 
 function executeSpellEffect(spell) {
