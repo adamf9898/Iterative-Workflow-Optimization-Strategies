@@ -54,7 +54,8 @@ Workflows evolve through:
 │   └── task-iteration-template.md  # Template for iterative tasks
 └── examples/                       # Practical workflow examples
     ├── software-development-workflow.md
-    └── project-management-workflow.md
+    ├── project-management-workflow.md
+    └── mtg-web-game-workflow.md
 ```
 
 ## Getting Started
@@ -72,6 +73,9 @@ Workflows evolve through:
 - Business process reengineering
 - Agile and Scrum methodology implementation
 - Quality assurance workflow optimization
+- Game development with AI integration
+- Web-based application development
+- Interactive content creation workflows
 
 ## Contributing
 
