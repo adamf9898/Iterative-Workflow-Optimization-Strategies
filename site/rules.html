@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules - The 9898-MTG League</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="mana-symbol">{W}{U}{B}{R}{G}</span>
+                <span class="brand-text">9898-MTG League</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="standings.html">Standings</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="rules.html" class="active">Rules</a></li>
+                <li><a href="players.html">Players</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>League Rules & Format</h1>
+            <p class="page-subtitle">Official rules and guidelines for the 9898-MTG League</p>
+        </section>
+
+        <section class="rules-section">
+            <div class="rule-card">
+                <h2>🎯 League Overview</h2>
+                <p>The 9898-MTG League is a seasonal competitive league running from September through May. Players compete in various Magic: The Gathering formats to accumulate points and climb the standings.</p>
+                <ul>
+                    <li><strong>Season Duration:</strong> 36 weeks (September - May)</li>
+                    <li><strong>Regular Events:</strong> 2-3 events per week</li>
+                    <li><strong>Championship:</strong> Top 8 players qualify for end-of-season championship</li>
+                    <li><strong>Prizes:</strong> Awarded to top finishers and seasonal champions</li>
+                </ul>
+            </div>
+
+            <div class="rule-card">
+                <h2>📊 Point System</h2>
+                <p>Players earn points based on their performance in sanctioned league events:</p>
+                
+                <h3>Match Results</h3>
+                <div class="points-table">
+                    <div class="point-item">
+                        <span class="point-type">Match Win</span>
+                        <span class="point-value">3 Points</span>
+                    </div>
+                    <div class="point-item">
+                        <span class="point-type">Match Draw</span>
+                        <span class="point-value">1 Point</span>
+                    </div>
+                    <div class="point-item">
+                        <span class="point-type">Match Loss</span>
+                        <span class="point-value">0 Points</span>
+                    </div>
+                </div>
+
+                <h3>Bonus Points</h3>
+                <div class="points-table">
+                    <div class="point-item">
+                        <span class="point-type">Event Participation</span>
+                        <span class="point-value">+1 Point</span>
+                    </div>
+                    <div class="point-item">
+                        <span class="point-type">Undefeated Record (4-0 or better)</span>
+                        <span class="point-value">+2 Points</span>
+                    </div>
+                    <div class="point-item">
+                        <span class="point-type">Monthly Championship 1st Place</span>
+                        <span class="point-value">+5 Points</span>
+                    </div>
+                    <div class="point-item">
+                        <span class="point-type">Monthly Championship Top 4</span>
+                        <span class="point-value">+2 Points</span>
+                    </div>
+                </div>
+
+                <h3>Special Events</h3>
+                <p>Double Points Events award 2x points for all categories. These are announced in advance on the schedule.</p>
+            </div>
+
+            <div class="rule-card">
+                <h2>🎴 Deck Construction Rules</h2>
+                
+                <h3>Standard Format</h3>
+                <ul>
+                    <li>Minimum 60-card deck</li>
+                    <li>Maximum 4 copies of any card except basic lands</li>
+                    <li>15-card sideboard (optional but recommended)</li>
+                    <li>Follow current Standard rotation and ban list</li>
+                    <li>All cards must be tournament-legal (no proxies)</li>
+                </ul>
+
+                <h3>Modern Format</h3>
+                <ul>
+                    <li>Minimum 60-card deck</li>
+                    <li>Maximum 4 copies of any card except basic lands</li>
+                    <li>15-card sideboard required</li>
+                    <li>Follow Modern ban list (updated quarterly)</li>
+                    <li>8th Edition and forward legal</li>
+                </ul>
+
+                <h3>Pioneer Format</h3>
+                <ul>
+                    <li>Minimum 60-card deck</li>
+                    <li>Maximum 4 copies of any card except basic lands</li>
+                    <li>15-card sideboard required</li>
+                    <li>Return to Ravnica and forward legal</li>
+                    <li>Follow Pioneer ban list</li>
+                </ul>
+
+                <h3>Commander Format</h3>
+                <ul>
+                    <li>100-card singleton deck (including commander)</li>
+                    <li>Exactly 1 legendary creature or planeswalker as commander</li>
+                    <li>All cards must match commander's color identity</li>
+                    <li>Follow Commander ban list and Rules Committee guidelines</li>
+                    <li>Power level 7-8 recommended for league events</li>
+                </ul>
+
+                <h3>Draft Format</h3>
+                <ul>
+                    <li>Minimum 40-card deck (including lands)</li>
+                    <li>Built from cards opened in draft</li>
+                    <li>Add basic lands as needed</li>
+                    <li>All unused cards form your sideboard</li>
+                </ul>
+            </div>
+
+            <div class="rule-card">
+                <h2>⚖️ Code of Conduct</h2>
+                
+                <h3>Sportsmanship</h3>
+                <ul>
+                    <li>Treat all players with respect and courtesy</li>
+                    <li>Maintain a positive and welcoming environment</li>
+                    <li>No cheating, stalling, or unsportsmanlike conduct</li>
+                    <li>Follow all official Magic tournament rules</li>
+                    <li>Accept judge rulings gracefully</li>
+                </ul>
+
+                <h3>Expected Behavior</h3>
+                <ul>
+                    <li>Arrive on time for scheduled events</li>
+                    <li>Bring appropriate deck lists for constructed events</li>
+                    <li>Use clean, unmarked sleeves</li>
+                    <li>Shuffle opponent's deck when offered</li>
+                    <li>Clearly announce all game actions</li>
+                    <li>Keep track of life totals accurately</li>
+                </ul>
+
+                <h3>Prohibited Actions</h3>
+                <ul>
+                    <li>Marked cards or sleeves</li>
+                    <li>Looking at opponent's deck or sideboard without permission</li>
+                    <li>Intentional misrepresentation of game state</li>
+                    <li>Collusion or bribery</li>
+                    <li>Harassment or intimidation</li>
+                    <li>Proxies or counterfeit cards (outside of casual Commander)</li>
+                </ul>
+
+                <h3>Enforcement</h3>
+                <p>Violations of the Code of Conduct will result in:</p>
+                <ul>
+                    <li><strong>First offense:</strong> Warning</li>
+                    <li><strong>Second offense:</strong> Match loss</li>
+                    <li><strong>Serious violations:</strong> Disqualification from event and potential league suspension</li>
+                </ul>
+            </div>
+
+            <div class="rule-card">
+                <h2>🏆 Championship Qualification</h2>
+                <p>At the end of the regular season, the top 8 players in the standings qualify for the League Championship:</p>
+                <ul>
+                    <li>Single-elimination tournament</li>
+                    <li>Best-of-3 matches</li>
+                    <li>Format determined by player vote (typically Standard or Modern)</li>
+                    <li>Champion receives trophy, prizes, and eternal glory</li>
+                    <li>Prize support for all top 8 finishers</li>
+                </ul>
+
+                <h3>Tiebreakers</h3>
+                <p>If players are tied in points at season end, tiebreakers are:</p>
+                <ol>
+                    <li>Head-to-head record</li>
+                    <li>Total match wins</li>
+                    <li>Win percentage</li>
+                    <li>Opponent's win percentage</li>
+                </ol>
+            </div>
+
+            <div class="rule-card">
+                <h2>📋 Match Procedures</h2>
+                
+                <h3>Match Structure</h3>
+                <ul>
+                    <li>All matches are best-of-3 games</li>
+                    <li>50-minute round time (except Commander)</li>
+                    <li>Sideboarding allowed between games</li>
+                    <li>Randomize who plays first in game 1</li>
+                    <li>Loser of previous game chooses who plays first in subsequent games</li>
+                </ul>
+
+                <h3>Reporting Results</h3>
+                <ul>
+                    <li>Report match results to the judge/organizer immediately</li>
+                    <li>Both players must confirm the result</li>
+                    <li>In case of dispute, call a judge</li>
+                </ul>
+
+                <h3>Slow Play & Draws</h3>
+                <ul>
+                    <li>Play at a reasonable pace</li>
+                    <li>If time expires, finish the current game</li>
+                    <li>Player ahead in games wins the match</li>
+                    <li>If games are tied 1-1, match is a draw</li>
+                </ul>
+            </div>
+
+            <div class="rule-card">
+                <h2>❓ Judges & Rules Questions</h2>
+                <p>Always call a judge if:</p>
+                <ul>
+                    <li>You have a rules question</li>
+                    <li>You notice a game rule violation</li>
+                    <li>Your opponent is engaging in unsportsmanlike conduct</li>
+                    <li>There's a dispute about the game state</li>
+                </ul>
+                <p>The judge's ruling is final. We follow the Magic Comprehensive Rules and tournament policies as published by Wizards of the Coast.</p>
+            </div>
+
+            <div class="rule-card">
+                <h2>📞 Contact & Questions</h2>
+                <p>For questions about league rules, scheduling, or other inquiries:</p>
+                <ul>
+                    <li><strong>Email:</strong> league@9898mtg.com</li>
+                    <li><strong>Location:</strong> Game Haven, 123 Main St, Downtown</li>
+                    <li><strong>League Director:</strong> Available at all events</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>9898-MTG League</h3>
+                <p>The premier Magic: The Gathering competitive league</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="standings.html">Standings</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="rules.html">Rules</a></li>
+                    <li><a href="players.html">Players</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: league@9898mtg.com</p>
+                <p>Location: Game Haven, Downtown</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 9898-MTG League. Magic: The Gathering is © Wizards of the Coast.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
