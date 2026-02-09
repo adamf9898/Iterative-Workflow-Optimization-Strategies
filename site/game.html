@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTG Web Game - 9898-MTG League</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="mana-symbol">{W}{U}{B}{R}{G}</span>
+                <span class="brand-text">9898-MTG League</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="standings.html">Standings</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="rules.html">Rules</a></li>
+                <li><a href="players.html">Players</a></li>
+                <li><a href="game.html" class="active">Game</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero game-hero">
+        <div class="hero-content">
+            <h1 class="hero-title">MTG Web Game</h1>
+            <p class="hero-tagline">Digital Magic: The Gathering Experience</p>
+            <p class="hero-subtitle">Play, Learn, and Master the Game</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Loading Screen -->
+        <div id="loadingScreen" class="loading-screen" style="display: none;">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Loading...</div>
+                <div class="loading-percentage">0%</div>
+            </div>
+        </div>
+
+        <!-- Table of Contents -->
+        <section class="toc-section">
+            <h2 class="section-title">Game Contents</h2>
+            <div class="toc-grid">
+                <div class="toc-column">
+                    <h3>Core Game Elements</h3>
+                    <ul class="toc-list">
+                        <li><a href="#encounter">Encounter</a></li>
+                        <li><a href="#board">Board</a></li>
+                        <li><a href="#rules">Rules</a></li>
+                        <li><a href="#color">Color</a></li>
+                        <li><a href="#creature">Creature</a></li>
+                        <li><a href="#deck">Deck</a></li>
+                        <li><a href="#land">Land</a></li>
+                        <li><a href="#master">Master</a></li>
+                        <li><a href="#boss">Boss</a></li>
+                        <li><a href="#format">Format</a></li>
+                    </ul>
+                </div>
+                <div class="toc-column">
+                    <h3>Card Properties</h3>
+                    <ul class="toc-list">
+                        <li><a href="#mana-type">Mana Type</a></li>
+                        <li><a href="#card-type">Card Type</a></li>
+                        <li><a href="#card-subtype">Card Subtype</a></li>
+                        <li><a href="#card-rarity">Card Rarity</a></li>
+                        <li><a href="#card-text">Card Text</a></li>
+                        <li><a href="#keyword-action">Keyword Action</a></li>
+                        <li><a href="#keyword-ability">Keyword Ability</a></li>
+                    </ul>
+                </div>
+                <div class="toc-column">
+                    <h3>Game Systems</h3>
+                    <ul class="toc-list">
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#item">Item</a></li>
+                        <li><a href="#quest">Quest</a></li>
+                        <li><a href="#reward">Reward</a></li>
+                        <li><a href="#weapon">Weapon</a></li>
+                        <li><a href="#quick-shop">Quick Shop</a></li>
+                        <li><a href="#spell">Spell</a></li>
+                    </ul>
+                </div>
+                <div class="toc-column">
+                    <h3>Generators & Tools</h3>
+                    <ul class="toc-list">
+                        <li><a href="#generate-card">Generate Card</a></li>
+                        <li><a href="#generate-mission">Generate Mission</a></li>
+                        <li><a href="#designer">Designer</a></li>
+                        <li><a href="#challenge">Challenge</a></li>
+                        <li><a href="#npc">NPC</a></li>
+                    </ul>
+                </div>
+                <div class="toc-column">
+                    <h3>Game Mechanics</h3>
+                    <ul class="toc-list">
+                        <li><a href="#mtgWhen">Card Text Whenever (mtgWhen)</a></li>
+                        <li><a href="#begin-game">Begin/Start Game</a></li>
+                        <li><a href="#mtgObject">mtgObject</a></li>
+                        <li><a href="#genCostSpell">genCostSpell</a></li>
+                        <li><a href="#WhenTargetStructure">WhenTargetStructure</a></li>
+                        <li><a href="#mtgObjectEmblem">mtgObjectEmblem</a></li>
+                        <li><a href="#mtgSpree">mtgSpree</a></li>
+                        <li><a href="#hasGets">hasGets</a></li>
+                        <li><a href="#castSpell">castSpell</a></li>
+                        <li><a href="#cardsYouOwn">cardsYouOwn</a></li>
+                        <li><a href="#cardsOwned">cardsOwned</a></li>
+                        <li><a href="#cardsTargetOwns">cardsTargetOwns</a></li>
+                        <li><a href="#cardsNotOwned">cardsNotOwned</a></li>
+                        <li><a href="#mtgCustom">mtgCustom</a></li>
+                        <li><a href="#thisHas">thisHas</a></li>
+                        <li><a href="#targetHas">targetHas</a></li>
+                        <li><a href="#openingHand">openingHand</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Board Canvas -->
+        <section id="board" class="game-section">
+            <h2 class="section-title">Game Board</h2>
+            <div class="board-container">
+                <canvas id="gameCanvas" width="1000" height="600"></canvas>
+                <div class="board-controls">
+                    <button class="btn btn-primary" id="clearBoard">Clear Board</button>
+                    <button class="btn btn-secondary" id="resetGame">Reset Game</button>
+                    <button class="btn btn-secondary" id="drawCard">Draw Card</button>
+                </div>
+            </div>
+            <div class="hand-area" id="handArea">
+                <h3>Your Hand</h3>
+                <div class="card-hand" id="cardHand"></div>
+            </div>
+        </section>
+
+        <!-- AI Chat Interface -->
+        <section class="game-section">
+            <h2 class="section-title">AI Assistant</h2>
+            <div class="ai-chat-container">
+                <div class="ai-chat-messages" id="aiChatMessages">
+                    <div class="ai-message system">
+                        <p>Welcome to the MTG AI Assistant! Ask me anything about Magic: The Gathering, rules, strategies, or use me to generate custom content.</p>
+                    </div>
+                </div>
+                <div class="ai-chat-input">
+                    <input type="text" id="aiChatInput" placeholder="Ask about MTG or request card generation..." />
+                    <button class="btn btn-primary" id="aiChatSend">Send</button>
+                </div>
+                <div class="ai-tools">
+                    <button class="btn btn-secondary" id="generateTextBtn">Generate Text</button>
+                    <button class="btn btn-secondary" id="generateImageBtn">Generate Image</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scryfall Card Search -->
+        <section class="game-section">
+            <h2 class="section-title">Card Search (Scryfall API)</h2>
+            <div class="card-search-container">
+                <div class="search-controls">
+                    <input type="text" id="cardSearchInput" placeholder="Search for cards..." />
+                    <button class="btn btn-primary" id="searchCardBtn">Search</button>
+                    <button class="btn btn-secondary" id="randomCardBtn">Random Card</button>
+                </div>
+                <div class="search-results" id="searchResults"></div>
+            </div>
+        </section>
+
+        <!-- Encounter Section -->
+        <section id="encounter" class="game-section">
+            <h2 class="section-title">Encounter</h2>
+            <div class="encounter-container">
+                <p>Encounter challenging opponents in various scenarios. Each encounter tests your strategic skills and deck-building prowess.</p>
+                <div class="encounter-grid">
+                    <div class="encounter-card" data-difficulty="easy">
+                        <h3>Novice Challenge</h3>
+                        <p class="difficulty">Difficulty: Easy</p>
+                        <p>Face off against a beginner-level opponent with a basic deck.</p>
+                        <button class="btn btn-primary start-encounter">Start</button>
+                    </div>
+                    <div class="encounter-card" data-difficulty="medium">
+                        <h3>Veteran Battle</h3>
+                        <p class="difficulty">Difficulty: Medium</p>
+                        <p>Challenge an experienced planeswalker with advanced strategies.</p>
+                        <button class="btn btn-primary start-encounter">Start</button>
+                    </div>
+                    <div class="encounter-card" data-difficulty="hard">
+                        <h3>Master Duel</h3>
+                        <p class="difficulty">Difficulty: Hard</p>
+                        <p>Test your skills against a master strategist with a powerful deck.</p>
+                        <button class="btn btn-primary start-encounter">Start</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Color Section -->
+        <section id="color" class="game-section">
+            <h2 class="section-title">MTG Colors</h2>
+            <div class="color-grid">
+                <div class="color-card white">
+                    <h3>{W} White</h3>
+                    <p>Peace, Order, Justice</p>
+                    <div class="color-abilities">Protection, Life Gain, Board Wipes</div>
+                </div>
+                <div class="color-card blue">
+                    <h3>{U} Blue</h3>
+                    <p>Knowledge, Manipulation, Illusion</p>
+                    <div class="color-abilities">Counterspells, Card Draw, Flying</div>
+                </div>
+                <div class="color-card black">
+                    <h3>{B} Black</h3>
+                    <p>Ambition, Death, Sacrifice</p>
+                    <div class="color-abilities">Removal, Reanimation, Life Drain</div>
+                </div>
+                <div class="color-card red">
+                    <h3>{R} Red</h3>
+                    <p>Freedom, Chaos, Passion</p>
+                    <div class="color-abilities">Direct Damage, Haste, Artifact Destruction</div>
+                </div>
+                <div class="color-card green">
+                    <h3>{G} Green</h3>
+                    <p>Nature, Growth, Strength</p>
+                    <div class="color-abilities">Ramp, Big Creatures, Enchantment Removal</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Generate Card Section -->
+        <section id="generate-card" class="game-section">
+            <h2 class="section-title">Generate Card</h2>
+            <div class="generator-container">
+                <div class="generator-controls">
+                    <div class="control-group">
+                        <label for="cardType">Card Type:</label>
+                        <select id="cardType">
+                            <option value="random">Random</option>
+                            <option value="creature">Creature</option>
+                            <option value="instant">Instant</option>
+                            <option value="sorcery">Sorcery</option>
+                            <option value="enchantment">Enchantment</option>
+                            <option value="artifact">Artifact</option>
+                            <option value="planeswalker">Planeswalker</option>
+                            <option value="land">Land</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="cardColor">Color:</label>
+                        <select id="cardColor">
+                            <option value="random">Random</option>
+                            <option value="white">White</option>
+                            <option value="blue">Blue</option>
+                            <option value="black">Black</option>
+                            <option value="red">Red</option>
+                            <option value="green">Green</option>
+                            <option value="multicolor">Multicolor</option>
+                            <option value="colorless">Colorless</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="cardRarity">Rarity:</label>
+                        <select id="cardRarity">
+                            <option value="random">Random</option>
+                            <option value="common">Common</option>
+                            <option value="uncommon">Uncommon</option>
+                            <option value="rare">Rare</option>
+                            <option value="mythic">Mythic Rare</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" id="generateCardBtn">Generate Card</button>
+                </div>
+                <div class="generated-card-display" id="generatedCardDisplay"></div>
+            </div>
+        </section>
+
+        <!-- Creature Section -->
+        <section id="creature" class="game-section">
+            <h2 class="section-title">Creature</h2>
+            <p>Creatures are the backbone of most MTG strategies. They can attack, block, and have various abilities.</p>
+            <div class="creature-examples">
+                <div class="example-card">
+                    <h4>Example: Llanowar Elves</h4>
+                    <p class="mana-cost">{G}</p>
+                    <p class="type-line">Creature — Elf Druid</p>
+                    <p class="card-text">{T}: Add {G}.</p>
+                    <p class="power-toughness">1/1</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deck Section -->
+        <section id="deck" class="game-section">
+            <h2 class="section-title">Deck Builder</h2>
+            <div class="deck-builder">
+                <div class="deck-stats">
+                    <h3>Deck Statistics</h3>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Cards:</span>
+                        <span class="stat-value" id="deckCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Creatures:</span>
+                        <span class="stat-value" id="creatureCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Spells:</span>
+                        <span class="stat-value" id="spellCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Lands:</span>
+                        <span class="stat-value" id="landCount">0</span>
+                    </div>
+                </div>
+                <div class="deck-list" id="deckList">
+                    <h3>Deck List</h3>
+                    <p class="text-muted">Add cards to build your deck...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shop Section -->
+        <section id="shop" class="game-section">
+            <h2 class="section-title">Shop</h2>
+            <div class="shop-container">
+                <div class="shop-currency">
+                    <h3>Your Gold: <span id="playerGold">1000</span></h3>
+                </div>
+                <div class="shop-items">
+                    <div class="shop-item">
+                        <h4>Booster Pack</h4>
+                        <p>Contains 15 random cards</p>
+                        <p class="price">100 Gold</p>
+                        <button class="btn btn-primary buy-item" data-item="booster" data-cost="100">Buy</button>
+                    </div>
+                    <div class="shop-item">
+                        <h4>Premium Pack</h4>
+                        <p>Contains 15 cards with guaranteed rare</p>
+                        <p class="price">250 Gold</p>
+                        <button class="btn btn-primary buy-item" data-item="premium" data-cost="250">Buy</button>
+                    </div>
+                    <div class="shop-item">
+                        <h4>Deck Box</h4>
+                        <p>Store and organize your decks</p>
+                        <p class="price">50 Gold</p>
+                        <button class="btn btn-primary buy-item" data-item="deckbox" data-cost="50">Buy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quest Section -->
+        <section id="quest" class="game-section">
+            <h2 class="section-title">Quests</h2>
+            <div class="quest-list">
+                <div class="quest-item">
+                    <h3>First Victory</h3>
+                    <p>Win your first game</p>
+                    <p class="quest-reward">Reward: 50 Gold + 1 Booster Pack</p>
+                    <div class="quest-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0/1</span>
+                    </div>
+                </div>
+                <div class="quest-item">
+                    <h3>Creature Master</h3>
+                    <p>Summon 10 creatures in total</p>
+                    <p class="quest-reward">Reward: 100 Gold</p>
+                    <div class="quest-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0/10</span>
+                    </div>
+                </div>
+                <div class="quest-item">
+                    <h3>Spellslinger</h3>
+                    <p>Cast 25 spells</p>
+                    <p class="quest-reward">Reward: 150 Gold + Special Card</p>
+                    <div class="quest-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span class="progress-text">0/25</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Generate Mission Section -->
+        <section id="generate-mission" class="game-section">
+            <h2 class="section-title">Generate Mission</h2>
+            <div class="mission-generator">
+                <button class="btn btn-primary" id="generateMissionBtn">Generate New Mission</button>
+                <div class="generated-mission" id="generatedMission"></div>
+            </div>
+        </section>
+
+        <!-- Game Mechanics Sections -->
+        <section id="mtgWhen" class="game-section">
+            <h2 class="section-title">Card Text Whenever (mtgWhen)</h2>
+            <p>Triggered abilities that activate when specific conditions are met.</p>
+            <div class="mechanic-examples">
+                <div class="example-box">
+                    <p><strong>Whenever</strong> a creature you control deals combat damage to a player, draw a card.</p>
+                </div>
+                <div class="example-box">
+                    <p><strong>Whenever</strong> this creature attacks, create a 1/1 token.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="begin-game" class="game-section">
+            <h2 class="section-title">Begin/Start Game</h2>
+            <div class="game-start-controls">
+                <button class="btn btn-primary" id="beginGameBtn">Begin New Game</button>
+                <button class="btn btn-secondary" id="shuffleDeckBtn">Shuffle Deck</button>
+                <button class="btn btn-secondary" id="drawOpeningHandBtn">Draw Opening Hand</button>
+            </div>
+            <div id="gameStatus" class="game-status"></div>
+        </section>
+
+        <section id="castSpell" class="game-section">
+            <h2 class="section-title">Cast Spell</h2>
+            <div class="spell-casting">
+                <div class="mana-pool">
+                    <h3>Available Mana</h3>
+                    <div class="mana-display">
+                        <span class="mana-item">{W}: <span id="whiteMana">0</span></span>
+                        <span class="mana-item">{U}: <span id="blueMana">0</span></span>
+                        <span class="mana-item">{B}: <span id="blackMana">0</span></span>
+                        <span class="mana-item">{R}: <span id="redMana">0</span></span>
+                        <span class="mana-item">{G}: <span id="greenMana">0</span></span>
+                        <span class="mana-item">{C}: <span id="colorlessMana">0</span></span>
+                    </div>
+                </div>
+                <div class="spell-list" id="spellList"></div>
+            </div>
+        </section>
+
+        <section id="boss" class="game-section">
+            <h2 class="section-title">Boss Encounters</h2>
+            <div class="boss-list">
+                <div class="boss-card">
+                    <h3>Nicol Bolas, God-Pharaoh</h3>
+                    <p class="boss-health">Health: 40</p>
+                    <p>The ancient dragon planeswalker seeks to dominate all worlds.</p>
+                    <button class="btn btn-primary challenge-boss">Challenge</button>
+                </div>
+                <div class="boss-card">
+                    <h3>Emrakul, the Aeons Torn</h3>
+                    <p class="boss-health">Health: 50</p>
+                    <p>The cosmic horror that devours entire planes.</p>
+                    <button class="btn btn-primary challenge-boss">Challenge</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="npc" class="game-section">
+            <h2 class="section-title">NPC Generator</h2>
+            <div class="npc-generator">
+                <button class="btn btn-primary" id="generateNPCBtn">Generate NPC</button>
+                <div class="generated-npc" id="generatedNPC"></div>
+            </div>
+        </section>
+
+        <!-- Additional Game Mechanic Sections (Placeholders) -->
+        <section id="land" class="game-section">
+            <h2 class="section-title">Land</h2>
+            <p>Lands are the foundation of your mana base. They produce mana used to cast spells.</p>
+        </section>
+
+        <section id="mana-type" class="game-section">
+            <h2 class="section-title">Mana Type</h2>
+            <p>Five colors of mana plus colorless: White {W}, Blue {U}, Black {B}, Red {R}, Green {G}, Colorless {C}</p>
+        </section>
+
+        <section id="card-type" class="game-section">
+            <h2 class="section-title">Card Type</h2>
+            <p>Main card types: Creature, Instant, Sorcery, Enchantment, Artifact, Planeswalker, Land</p>
+        </section>
+
+        <section id="card-subtype" class="game-section">
+            <h2 class="section-title">Card Subtype</h2>
+            <p>Creature types, land types, artifact types, and more define card subtypes.</p>
+        </section>
+
+        <section id="card-rarity" class="game-section">
+            <h2 class="section-title">Card Rarity</h2>
+            <div class="rarity-list">
+                <div class="rarity-item common">Common</div>
+                <div class="rarity-item uncommon">Uncommon</div>
+                <div class="rarity-item rare">Rare</div>
+                <div class="rarity-item mythic">Mythic Rare</div>
+            </div>
+        </section>
+
+        <section id="keyword-action" class="game-section">
+            <h2 class="section-title">Keyword Action</h2>
+            <p>Actions like: Destroy, Exile, Sacrifice, Tap, Untap, Counter, Draw, Discard</p>
+        </section>
+
+        <section id="keyword-ability" class="game-section">
+            <h2 class="section-title">Keyword Ability</h2>
+            <p>Common abilities: Flying, Trample, Haste, Vigilance, Lifelink, Deathtouch, First Strike, Double Strike</p>
+        </section>
+
+        <!-- Perchance Plugin Documentation -->
+        <section class="game-section">
+            <h2 class="section-title">Perchance Plugins/Modules Reference</h2>
+            <div class="plugin-reference">
+                <p>The following Perchance plugins are referenced for advanced features:</p>
+                <pre><code><!-- Perchance Plugin Imports
+googleSheets = {import:google-sheets-plugin}
+copyText = {import:copy-text-plugin}
+createInstance = {import:create-instance-plugin}
+locker = {import:locker-plugin}
+superFetch = {import:super-fetch-plugin}
+generateText = {import:ai-text-plugin}
+downloadButton = {import:download-button-plugin}
+json = {import:json-plugin}
+md = {import:markdown-plugin}
+toc = {import:simple-toc-plugin}
+adjW = {import:adjective}
+advW = {import:adverb}
+ai = {import:ai-text-plugin}
+background = {import:background-image-plugin}
+commentsPlugin = {import:comments-plugin}
+eW = {import:emotion}
+f = {import:food}
+game = {import:video-game-gen}
+generatorStats = {import:generator-stats-plugin}
+goto = {import:goto-plugin}
+icon = {import:rpg-icon-plugin}
+image = {import:text-to-image-plugin}
+iW = {import:interjection}
+mon = {import:monster-type}
+mtgChaos = {import:9898-mtg-chaos-rpg-checker}
+n = {import:noun}
+nW = {import:noun}
+pride = {import:pride-plugin}
+pW = {import:pronoun}
+roll = {import:dice-plugin}
+rW = {import:rare-word}
+selectRange = {import:select-range-plugin}
+tabs = {import:power-tabs-plugin}
+ttap = {import:tap-plugin}
+type = {import:typewriter-plugin}
+vW = {import:verb}
+W = {import:weapons}
+--></code></pre>
+            </div>
+        </section>
+
+        <!-- Remaining mechanic sections (compact) -->
+        <section id="format" class="game-section"><h2 class="section-title">Format</h2><p>Standard, Modern, Pioneer, Commander, Legacy, Vintage, Pauper, Limited</p></section>
+        <section id="master" class="game-section"><h2 class="section-title">Master</h2><p>Achieve mastery in different aspects of the game</p></section>
+        <section id="item" class="game-section"><h2 class="section-title">Item</h2><p>Collectible items and rewards</p></section>
+        <section id="reward" class="game-section"><h2 class="section-title">Reward</h2><p>Earn rewards through gameplay achievements</p></section>
+        <section id="weapon" class="game-section"><h2 class="section-title">Weapon</h2><p>Equipment cards and artifacts</p></section>
+        <section id="quick-shop" class="game-section"><h2 class="section-title">Quick Shop</h2><p>Quick access to essential items</p></section>
+        <section id="spell" class="game-section"><h2 class="section-title">Spell</h2><p>Instant and Sorcery spells</p></section>
+        <section id="designer" class="game-section"><h2 class="section-title">Designer</h2><p>Custom card designer tool</p></section>
+        <section id="challenge" class="game-section"><h2 class="section-title">Challenge</h2><p>Special challenge modes</p></section>
+        <section id="card-text" class="game-section"><h2 class="section-title">Card Text</h2><p>Rules text and abilities on cards</p></section>
+        <section id="mtgObject" class="game-section"><h2 class="section-title">mtgObject</h2><p>Game object representation system</p></section>
+        <section id="genCostSpell" class="game-section"><h2 class="section-title">genCostSpell</h2><p>Spell cost generation system</p></section>
+        <section id="WhenTargetStructure" class="game-section"><h2 class="section-title">WhenTargetStructure</h2><p>Target selection framework</p></section>
+        <section id="mtgObjectEmblem" class="game-section"><h2 class="section-title">mtgObjectEmblem</h2><p>Emblem game objects</p></section>
+        <section id="mtgSpree" class="game-section"><h2 class="section-title">mtgSpree</h2><p>Spree mechanic implementation</p></section>
+        <section id="hasGets" class="game-section"><h2 class="section-title">hasGets</h2><p>Card ability checker</p></section>
+        <section id="cardsYouOwn" class="game-section"><h2 class="section-title">cardsYouOwn</h2><p>Player card ownership tracker</p></section>
+        <section id="cardsOwned" class="game-section"><h2 class="section-title">cardsOwned</h2><p>Total cards owned</p></section>
+        <section id="cardsTargetOwns" class="game-section"><h2 class="section-title">cardsTargetOwns</h2><p>Target player card ownership</p></section>
+        <section id="cardsNotOwned" class="game-section"><h2 class="section-title">cardsNotOwned</h2><p>Unowned cards tracker</p></section>
+        <section id="mtgCustom" class="game-section"><h2 class="section-title">mtgCustom</h2><p>Custom card mechanics</p></section>
+        <section id="thisHas" class="game-section"><h2 class="section-title">thisHas</h2><p>Self-referential abilities</p></section>
+        <section id="targetHas" class="game-section"><h2 class="section-title">targetHas</h2><p>Target ability checker</p></section>
+        <section id="openingHand" class="game-section"><h2 class="section-title">openingHand</h2><p>Starting hand management</p></section>
+        <section id="rules" class="game-section"><h2 class="section-title">Rules</h2><p>Comprehensive MTG rules reference</p></section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>9898-MTG League</h3>
+                <p>The premier Magic: The Gathering competitive league</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="standings.html">Standings</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="rules.html">Rules</a></li>
+                    <li><a href="players.html">Players</a></li>
+                    <li><a href="game.html">Game</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: league@9898mtg.com</p>
+                <p>Location: Game Haven, Downtown</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 9898-MTG League. Magic: The Gathering is © Wizards of the Coast.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

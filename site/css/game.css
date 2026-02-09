@@ -1,0 +1,941 @@
+/* ============================================
+   9898-MTG League - Game Styles
+   Game-specific styling for MTG Web Game
+   ============================================ */
+
+/* ============================================
+   Loading Screen
+   ============================================ */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(15, 15, 30, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-md);
+    border: 4px solid var(--color-purple);
+    border-top: 4px solid var(--color-gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    font-size: 1.5rem;
+    color: var(--color-gold-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.loading-percentage {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-gold);
+}
+
+/* ============================================
+   Game Hero
+   ============================================ */
+.game-hero {
+    background: linear-gradient(135deg, 
+        var(--color-purple-dark) 0%, 
+        var(--color-dark-secondary) 30%,
+        #1a3a52 60%,
+        var(--color-purple) 100%);
+}
+
+/* ============================================
+   Table of Contents
+   ============================================ */
+.toc-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.toc-column {
+    background-color: var(--color-dark-secondary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-purple);
+}
+
+.toc-column h3 {
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.125rem;
+}
+
+.toc-list {
+    list-style: none;
+}
+
+.toc-list li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.toc-list a {
+    color: var(--color-text-secondary);
+    display: block;
+    padding: var(--spacing-xs);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.toc-list a:hover {
+    background-color: var(--color-purple);
+    color: var(--color-gold-light);
+    padding-left: var(--spacing-md);
+}
+
+/* ============================================
+   Game Section
+   ============================================ */
+.game-section {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background-color: var(--color-dark-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-purple);
+}
+
+/* ============================================
+   Game Board Canvas
+   ============================================ */
+.board-container {
+    margin-bottom: var(--spacing-lg);
+}
+
+#gameCanvas {
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    background: linear-gradient(135deg, #1a1a2e 0%, #2d1b4e 100%);
+    border: 2px solid var(--color-gold);
+    border-radius: var(--radius-lg);
+    display: block;
+    margin: 0 auto var(--spacing-md);
+    cursor: crosshair;
+    box-shadow: var(--shadow-lg);
+}
+
+.board-controls {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   Hand Area
+   ============================================ */
+.hand-area {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background-color: var(--color-dark-tertiary);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-purple);
+}
+
+.hand-area h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-gold);
+}
+
+.card-hand {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    min-height: 100px;
+}
+
+/* ============================================
+   MTG Card Display
+   ============================================ */
+.mtg-card {
+    width: 200px;
+    height: 280px;
+    background: linear-gradient(135deg, var(--color-dark-tertiary) 0%, var(--color-purple-dark) 100%);
+    border: 2px solid var(--color-gold);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    cursor: grab;
+    transition: all var(--transition-normal);
+    position: relative;
+    box-shadow: var(--shadow-md);
+}
+
+.mtg-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: var(--shadow-lg), var(--shadow-gold);
+    z-index: 10;
+}
+
+.mtg-card.dragging {
+    opacity: 0.5;
+    cursor: grabbing;
+}
+
+.card-name {
+    font-weight: 700;
+    color: var(--color-gold-light);
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.875rem;
+}
+
+.card-mana-cost {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+}
+
+.card-type-line {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-sm);
+}
+
+.card-text-box {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    margin-bottom: var(--spacing-sm);
+    min-height: 60px;
+}
+
+.card-pt {
+    position: absolute;
+    bottom: var(--spacing-sm);
+    right: var(--spacing-sm);
+    background-color: var(--color-purple);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.875rem;
+}
+
+/* ============================================
+   Color Cards
+   ============================================ */
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.color-card {
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 2px solid;
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.color-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.color-card.white {
+    background: linear-gradient(135deg, #f8f8e8 0%, #e8e8d8 100%);
+    border-color: #f0e68c;
+    color: #333;
+}
+
+.color-card.blue {
+    background: linear-gradient(135deg, #0e4c92 0%, #1a5fb4 100%);
+    border-color: #4a9eff;
+}
+
+.color-card.black {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border-color: #666;
+}
+
+.color-card.red {
+    background: linear-gradient(135deg, #8b1a1a 0%, #b52a2a 100%);
+    border-color: #ff4a4a;
+}
+
+.color-card.green {
+    background: linear-gradient(135deg, #1a5c1a 0%, #2a7a2a 100%);
+    border-color: #4aff88;
+}
+
+.color-abilities {
+    margin-top: var(--spacing-sm);
+    font-size: 0.875rem;
+    opacity: 0.9;
+}
+
+/* ============================================
+   AI Chat Interface
+   ============================================ */
+.ai-chat-container {
+    background-color: var(--color-dark-tertiary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-purple);
+}
+
+.ai-chat-messages {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--color-dark-bg);
+    border-radius: var(--radius-md);
+}
+
+.ai-message {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ai-message.system {
+    background-color: var(--color-purple-dark);
+    border-left: 4px solid var(--color-gold);
+}
+
+.ai-message.user {
+    background-color: var(--color-dark-secondary);
+    border-left: 4px solid var(--color-accent-blue);
+}
+
+.ai-message.assistant {
+    background-color: var(--color-dark-tertiary);
+    border-left: 4px solid var(--color-accent-green);
+}
+
+.ai-chat-input {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.ai-chat-input input {
+    flex: 1;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-dark-bg);
+    border: 1px solid var(--color-purple);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-size: 1rem;
+}
+
+.ai-chat-input input:focus {
+    outline: none;
+    border-color: var(--color-gold);
+}
+
+.ai-tools {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   Card Search
+   ============================================ */
+.card-search-container {
+    padding: var(--spacing-lg);
+    background-color: var(--color-dark-tertiary);
+    border-radius: var(--radius-lg);
+}
+
+.search-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.search-controls input {
+    flex: 1;
+    min-width: 200px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-dark-bg);
+    border: 1px solid var(--color-purple);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-size: 1rem;
+}
+
+.search-controls input:focus {
+    outline: none;
+    border-color: var(--color-gold);
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+/* ============================================
+   Encounter Cards
+   ============================================ */
+.encounter-container {
+    padding: var(--spacing-lg);
+}
+
+.encounter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.encounter-card {
+    background: linear-gradient(135deg, var(--color-dark-tertiary) 0%, var(--color-purple-dark) 100%);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-purple);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.encounter-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg), var(--shadow-gold);
+}
+
+.encounter-card[data-difficulty="easy"] {
+    border-color: var(--color-accent-green);
+}
+
+.encounter-card[data-difficulty="medium"] {
+    border-color: var(--color-amber);
+}
+
+.encounter-card[data-difficulty="hard"] {
+    border-color: var(--color-accent-red);
+}
+
+.encounter-card .difficulty {
+    color: var(--color-gold);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+}
+
+.start-encounter {
+    margin-top: var(--spacing-md);
+}
+
+/* ============================================
+   Generator Controls
+   ============================================ */
+.generator-container {
+    padding: var(--spacing-lg);
+    background-color: var(--color-dark-tertiary);
+    border-radius: var(--radius-lg);
+}
+
+.generator-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.control-group label {
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+.control-group select {
+    padding: var(--spacing-sm);
+    background-color: var(--color-dark-bg);
+    border: 1px solid var(--color-purple);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-size: 1rem;
+}
+
+.control-group select:focus {
+    outline: none;
+    border-color: var(--color-gold);
+}
+
+.generated-card-display {
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============================================
+   Creature Examples
+   ============================================ */
+.creature-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.example-card {
+    background-color: var(--color-dark-tertiary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 2px solid var(--color-gold);
+}
+
+.example-card h4 {
+    color: var(--color-gold-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.mana-cost {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.type-line {
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-sm);
+    font-style: italic;
+}
+
+.power-toughness {
+    text-align: right;
+    font-weight: 700;
+    color: var(--color-gold);
+}
+
+/* ============================================
+   Deck Builder
+   ============================================ */
+.deck-builder {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-lg);
+}
+
+.deck-stats {
+    background-color: var(--color-dark-tertiary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-purple);
+}
+
+.deck-stats h3 {
+    margin-bottom: var(--spacing-md);
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--color-purple);
+}
+
+.stat-label {
+    color: var(--color-text-secondary);
+}
+
+.stat-value {
+    color: var(--color-gold);
+    font-weight: 700;
+}
+
+.deck-list {
+    background-color: var(--color-dark-tertiary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-purple);
+    min-height: 300px;
+}
+
+/* ============================================
+   Shop
+   ============================================ */
+.shop-container {
+    padding: var(--spacing-lg);
+}
+
+.shop-currency {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-gold-dark) 0%, var(--color-gold) 100%);
+    color: var(--color-dark-bg);
+    border-radius: var(--radius-lg);
+    font-size: 1.5rem;
+}
+
+.shop-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.shop-item {
+    background-color: var(--color-dark-tertiary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-purple);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.shop-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-gold);
+    box-shadow: var(--shadow-lg);
+}
+
+.shop-item h4 {
+    color: var(--color-gold-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.shop-item .price {
+    color: var(--color-gold);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: var(--spacing-md) 0;
+}
+
+/* ============================================
+   Quest System
+   ============================================ */
+.quest-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.quest-item {
+    background-color: var(--color-dark-tertiary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-gold);
+}
+
+.quest-item h3 {
+    color: var(--color-gold-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.quest-reward {
+    color: var(--color-accent-green);
+    font-weight: 600;
+    margin-top: var(--spacing-sm);
+}
+
+.quest-progress {
+    margin-top: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.progress-bar {
+    flex: 1;
+    height: 20px;
+    background-color: var(--color-dark-bg);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-amber) 100%);
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    min-width: 40px;
+}
+
+/* ============================================
+   Mission Generator
+   ============================================ */
+.mission-generator {
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.generated-mission {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background-color: var(--color-dark-tertiary);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-gold);
+    min-height: 150px;
+}
+
+/* ============================================
+   Mechanic Examples
+   ============================================ */
+.mechanic-examples {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.example-box {
+    background-color: var(--color-dark-tertiary);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--color-gold);
+}
+
+/* ============================================
+   Game Start Controls
+   ============================================ */
+.game-start-controls {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.game-status {
+    padding: var(--spacing-lg);
+    background-color: var(--color-dark-tertiary);
+    border-radius: var(--radius-md);
+    min-height: 100px;
+}
+
+/* ============================================
+   Spell Casting
+   ============================================ */
+.spell-casting {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--spacing-lg);
+}
+
+.mana-pool {
+    background-color: var(--color-dark-tertiary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-purple);
+}
+
+.mana-display {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.mana-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-sm);
+    background-color: var(--color-dark-bg);
+    border-radius: var(--radius-sm);
+}
+
+.spell-list {
+    background-color: var(--color-dark-tertiary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-purple);
+    min-height: 200px;
+}
+
+/* ============================================
+   Boss Cards
+   ============================================ */
+.boss-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.boss-card {
+    background: linear-gradient(135deg, var(--color-accent-red) 0%, var(--color-purple-dark) 100%);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    border: 3px solid var(--color-gold);
+    text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.boss-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+}
+
+.boss-health {
+    color: var(--color-accent-red);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: var(--spacing-sm) 0;
+}
+
+.challenge-boss {
+    margin-top: var(--spacing-md);
+}
+
+/* ============================================
+   NPC Generator
+   ============================================ */
+.npc-generator {
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.generated-npc {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background-color: var(--color-dark-tertiary);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-purple);
+    min-height: 200px;
+}
+
+/* ============================================
+   Rarity Display
+   ============================================ */
+.rarity-list {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.rarity-item {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    border: 2px solid;
+}
+
+.rarity-item.common {
+    background-color: #2a2a2a;
+    border-color: #666;
+    color: #ccc;
+}
+
+.rarity-item.uncommon {
+    background-color: #1a3a4a;
+    border-color: #4a9eff;
+    color: #4a9eff;
+}
+
+.rarity-item.rare {
+    background-color: #4a3a1a;
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+}
+
+.rarity-item.mythic {
+    background-color: #4a1a2a;
+    border-color: #ff4a88;
+    color: #ff4a88;
+}
+
+/* ============================================
+   Plugin Reference
+   ============================================ */
+.plugin-reference {
+    background-color: var(--color-dark-tertiary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+}
+
+.plugin-reference pre {
+    background-color: var(--color-dark-bg);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+}
+
+.plugin-reference code {
+    font-family: 'Courier New', monospace;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+    .toc-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .deck-builder {
+        grid-template-columns: 1fr;
+    }
+    
+    .spell-casting {
+        grid-template-columns: 1fr;
+    }
+    
+    .color-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .board-controls {
+        flex-direction: column;
+    }
+    
+    .board-controls .btn {
+        width: 100%;
+    }
+    
+    #gameCanvas {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .encounter-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-controls {
+        flex-direction: column;
+    }
+    
+    .search-controls input {
+        width: 100%;
+    }
+    
+    .generator-controls {
+        grid-template-columns: 1fr;
+    }
+}
