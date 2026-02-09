@@ -1,0 +1,1066 @@
+/* ============================================
+   9898-MTG League - Main Stylesheet
+   MTG-themed dark design with gold accents
+   ============================================ */
+
+/* ============================================
+   CSS Variables & Root Styles
+   ============================================ */
+:root {
+    /* MTG-inspired Color Palette */
+    --color-dark-bg: #0f0f1e;
+    --color-dark-secondary: #1a1a2e;
+    --color-dark-tertiary: #252538;
+    --color-purple-dark: #2d1b4e;
+    --color-purple: #3d2563;
+    --color-purple-light: #4d3573;
+    
+    --color-gold: #d4af37;
+    --color-gold-light: #e6c84f;
+    --color-gold-dark: #b8941f;
+    --color-amber: #ffbf00;
+    
+    --color-text-primary: #e8e8f0;
+    --color-text-secondary: #b8b8c8;
+    --color-text-muted: #8888a0;
+    
+    --color-accent-blue: #4a9eff;
+    --color-accent-red: #ff4a4a;
+    --color-accent-green: #4aff88;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+    --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.3);
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* ============================================
+   Global Styles
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-dark-bg);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--color-gold-light);
+}
+
+h1 { font-size: 2.5rem; margin-bottom: var(--spacing-md); }
+h2 { font-size: 2rem; margin-bottom: var(--spacing-md); }
+h3 { font-size: 1.5rem; margin-bottom: var(--spacing-sm); }
+h4 { font-size: 1.25rem; margin-bottom: var(--spacing-sm); }
+
+p { margin-bottom: var(--spacing-sm); }
+
+a {
+    color: var(--color-gold);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-gold-light);
+}
+
+ul {
+    list-style-position: inside;
+}
+
+/* ============================================
+   Navigation Bar
+   ============================================ */
+.navbar {
+    background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-dark-secondary) 100%);
+    padding: var(--spacing-sm) 0;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--color-gold);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-gold);
+}
+
+.mana-symbol {
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--color-gold), var(--color-amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.brand-text {
+    color: var(--color-gold-light);
+}
+
+.nav-menu {
+    display: flex;
+    gap: var(--spacing-lg);
+    list-style: none;
+}
+
+.nav-menu li a {
+    color: var(--color-text-primary);
+    font-weight: 500;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+    background-color: var(--color-purple);
+    color: var(--color-gold-light);
+}
+
+/* Mobile Navigation Toggle */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-xs);
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-gold);
+    border-radius: 2px;
+    transition: all var(--transition-fast);
+}
+
+/* ============================================
+   Hero Section
+   ============================================ */
+.hero {
+    background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-dark-secondary) 50%, var(--color-purple) 100%);
+    padding: var(--spacing-xl) var(--spacing-md);
+    text-align: center;
+    border-bottom: 3px solid var(--color-gold);
+    box-shadow: var(--shadow-gold);
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-sm);
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-amber) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-tagline {
+    font-size: 1.75rem;
+    color: var(--color-gold-light);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+}
+
+.hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   Buttons
+   ============================================ */
+.btn {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-amber) 100%);
+    color: var(--color-dark-bg);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), var(--shadow-gold);
+    color: var(--color-dark-bg);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-gold);
+    color: var(--color-dark-bg);
+    transform: translateY(-2px);
+}
+
+.btn-link {
+    color: var(--color-gold);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.btn-link:hover {
+    color: var(--color-gold-light);
+    text-decoration: underline;
+}
+
+/* ============================================
+   Container & Layout
+   ============================================ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg) var(--spacing-md);
+    flex: 1;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--color-purple);
+}
+
+.page-subtitle {
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+}
+
+.section-title {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-purple);
+}
+
+.featured-section,
+.standings-section,
+.schedule-section,
+.rules-section,
+.players-section,
+.info-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+/* ============================================
+   Cards
+   ============================================ */
+.card {
+    background: linear-gradient(135deg, var(--color-dark-secondary) 0%, var(--color-dark-tertiary) 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-purple);
+    transition: all var(--transition-normal);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-gold);
+}
+
+.card-header {
+    margin-bottom: var(--spacing-md);
+}
+
+.card-header h3 {
+    margin-bottom: var(--spacing-xs);
+}
+
+.card-body {
+    color: var(--color-text-secondary);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+/* ============================================
+   Event Cards
+   ============================================ */
+.event-card .event-date {
+    color: var(--color-gold);
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.event-format {
+    margin-bottom: var(--spacing-sm);
+}
+
+.format-badge {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--color-purple);
+    color: var(--color-gold);
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ============================================
+   Result Cards
+   ============================================ */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.result-card {
+    background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-dark-secondary) 100%);
+}
+
+.result-winner {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.trophy {
+    font-size: 2rem;
+}
+
+.winner-name {
+    font-weight: 700;
+    color: var(--color-gold-light);
+    font-size: 1.125rem;
+}
+
+.winner-deck {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+}
+
+.result-stats {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-purple);
+}
+
+/* ============================================
+   Leader Cards
+   ============================================ */
+.leaders-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.leader-card {
+    background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-dark-tertiary) 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    text-align: center;
+    border: 2px solid var(--color-purple);
+    position: relative;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+}
+
+.leader-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg), var(--shadow-gold);
+}
+
+.rank-badge {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+    font-size: 1rem;
+}
+
+.rank-badge.gold {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: var(--color-dark-bg);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+}
+
+.rank-badge.silver {
+    background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%);
+    color: var(--color-dark-bg);
+    box-shadow: 0 0 15px rgba(192, 192, 192, 0.5);
+}
+
+.rank-badge.bronze {
+    background: linear-gradient(135deg, #cd7f32 0%, #e89a5c 100%);
+    color: var(--color-dark-bg);
+    box-shadow: 0 0 15px rgba(205, 127, 50, 0.5);
+}
+
+.leader-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-purple);
+}
+
+.leader-stats .stat {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+}
+
+.leader-stats .stat strong {
+    color: var(--color-gold);
+    display: block;
+    font-size: 1.25rem;
+}
+
+/* ============================================
+   Standings Table
+   ============================================ */
+.season-summary {
+    margin-bottom: var(--spacing-lg);
+}
+
+.summary-card {
+    background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-dark-secondary) 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-gold);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+}
+
+.table-container {
+    overflow-x: auto;
+    background-color: var(--color-dark-secondary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.standings-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.standings-table thead {
+    background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-purple) 100%);
+}
+
+.standings-table th {
+    padding: var(--spacing-md);
+    text-align: left;
+    color: var(--color-gold);
+    font-weight: 600;
+    border-bottom: 2px solid var(--color-gold);
+    white-space: nowrap;
+    user-select: none;
+}
+
+.standings-table th.sortable {
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.standings-table th.sortable:hover {
+    background-color: var(--color-purple-light);
+}
+
+.standings-table th.sortable.active {
+    color: var(--color-amber);
+}
+
+.sort-arrow {
+    margin-left: var(--spacing-xs);
+    font-size: 0.75rem;
+}
+
+.standings-table tbody tr {
+    border-bottom: 1px solid var(--color-purple);
+    transition: background-color var(--transition-fast);
+}
+
+.standings-table tbody tr:hover {
+    background-color: var(--color-dark-tertiary);
+}
+
+.standings-table td {
+    padding: var(--spacing-md);
+}
+
+.rank-cell .rank-badge {
+    padding: 4px 12px;
+    font-size: 0.875rem;
+}
+
+.player-cell {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.points-cell {
+    color: var(--color-gold);
+}
+
+.winrate-cell {
+    color: var(--color-text-secondary);
+}
+
+.info-box {
+    background-color: var(--color-dark-tertiary);
+    border-left: 4px solid var(--color-gold);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin-top: var(--spacing-lg);
+}
+
+.info-box h3 {
+    margin-bottom: var(--spacing-md);
+}
+
+.info-box ul {
+    margin-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+/* ============================================
+   Schedule / Events
+   ============================================ */
+.events-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.event-item {
+    display: flex;
+    gap: var(--spacing-md);
+    background-color: var(--color-dark-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-purple);
+    transition: all var(--transition-normal);
+}
+
+.event-item:hover {
+    border-color: var(--color-gold);
+    box-shadow: var(--shadow-md);
+}
+
+.event-item.upcoming {
+    border-left: 4px solid var(--color-gold);
+}
+
+.event-item.past {
+    opacity: 0.8;
+    border-left: 4px solid var(--color-text-muted);
+}
+
+.event-date-badge {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-amber) 100%);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-dark-bg);
+    font-weight: 700;
+}
+
+.event-date-badge.past {
+    background: linear-gradient(135deg, var(--color-text-muted) 0%, var(--color-purple) 100%);
+    color: var(--color-text-primary);
+}
+
+.event-date-badge .month {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+}
+
+.event-date-badge .day {
+    font-size: 2rem;
+}
+
+.event-details {
+    flex: 1;
+}
+
+.event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.event-info p {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-secondary);
+}
+
+.event-description {
+    margin-top: var(--spacing-sm);
+}
+
+.event-points {
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--color-purple);
+    color: var(--color-gold);
+}
+
+.event-results {
+    background-color: var(--color-dark-tertiary);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    margin-top: var(--spacing-sm);
+}
+
+.event-results p {
+    margin-bottom: var(--spacing-xs);
+}
+
+.format-badge.standard { background-color: #4a5d7a; }
+.format-badge.modern { background-color: #7a4a5d; }
+.format-badge.pioneer { background-color: #5d7a4a; }
+.format-badge.draft { background-color: #7a6a4a; }
+.format-badge.commander { background-color: #5d4a7a; }
+
+/* ============================================
+   Rules Page
+   ============================================ */
+.rule-card {
+    background-color: var(--color-dark-secondary);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--color-purple);
+}
+
+.rule-card h2 {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-gold);
+}
+
+.rule-card h3 {
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-gold-light);
+}
+
+.rule-card ul, .rule-card ol {
+    margin-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.rule-card li {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-secondary);
+}
+
+.points-table {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.point-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--color-dark-tertiary);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--color-gold);
+}
+
+.point-type {
+    color: var(--color-text-primary);
+    font-weight: 500;
+}
+
+.point-value {
+    color: var(--color-gold);
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+/* ============================================
+   Players Page
+   ============================================ */
+.players-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.player-card {
+    background: linear-gradient(135deg, var(--color-dark-secondary) 0%, var(--color-dark-tertiary) 100%);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-purple);
+    transition: all var(--transition-normal);
+}
+
+.player-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-gold);
+}
+
+.player-header {
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-purple);
+}
+
+.player-avatar {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-amber) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-dark-bg);
+    margin: 0 auto var(--spacing-md);
+    box-shadow: var(--shadow-md);
+}
+
+.player-header h3 {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-gold-light);
+}
+
+.player-rank {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+}
+
+.player-info {
+    margin-bottom: var(--spacing-md);
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-xs) 0;
+    border-bottom: 1px solid var(--color-dark-tertiary);
+}
+
+.info-label {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+}
+
+.info-value {
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+.mana {
+    display: inline-block;
+    padding: 2px 6px;
+    background-color: var(--color-purple);
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+.player-bio {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+/* ============================================
+   Info Section
+   ============================================ */
+.info-card {
+    background: linear-gradient(135deg, var(--color-purple-dark) 0%, var(--color-dark-secondary) 100%);
+    border: 2px solid var(--color-gold);
+}
+
+.info-card h2 {
+    color: var(--color-gold-light);
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+    background: linear-gradient(135deg, var(--color-dark-secondary) 0%, var(--color-purple-dark) 100%);
+    border-top: 2px solid var(--color-gold);
+    padding: var(--spacing-xl) var(--spacing-md) var(--spacing-md);
+    margin-top: auto;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-section h3, .footer-section h4 {
+    color: var(--color-gold);
+    margin-bottom: var(--spacing-sm);
+}
+
+.footer-section p {
+    color: var(--color-text-secondary);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer-section ul li a {
+    color: var(--color-text-secondary);
+}
+
+.footer-section ul li a:hover {
+    color: var(--color-gold-light);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-purple);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-tagline {
+        font-size: 1.5rem;
+    }
+    
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-dark-secondary);
+        flex-direction: column;
+        gap: 0;
+        padding: var(--spacing-md);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: all var(--transition-normal);
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+    
+    .nav-menu li a {
+        display: block;
+        padding: var(--spacing-sm);
+    }
+    
+    .card-grid,
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .event-item {
+        flex-direction: column;
+    }
+    
+    .event-date-badge {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+    }
+    
+    .event-date-badge .day {
+        font-size: 1.5rem;
+    }
+    
+    .table-container {
+        font-size: 0.875rem;
+    }
+    
+    .standings-table th,
+    .standings-table td {
+        padding: var(--spacing-sm);
+    }
+    
+    .leaders-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .players-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-tagline {
+        font-size: 1.25rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+.text-center { text-align: center; }
+.text-gold { color: var(--color-gold); }
+.text-muted { color: var(--color-text-muted); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-lg { margin-bottom: var(--spacing-lg); }

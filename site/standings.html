@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standings - The 9898-MTG League</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="mana-symbol">{W}{U}{B}{R}{G}</span>
+                <span class="brand-text">9898-MTG League</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="standings.html" class="active">Standings</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="rules.html">Rules</a></li>
+                <li><a href="players.html">Players</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="page-header">
+            <h1>League Standings</h1>
+            <p class="page-subtitle">Season 2024-2025 | Current as of January 15, 2025</p>
+        </section>
+
+        <section class="standings-section">
+            <div class="season-summary">
+                <div class="summary-card">
+                    <h3>Season Stats</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-value">10</span>
+                            <span class="stat-label">Active Players</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">8</span>
+                            <span class="stat-label">Events Played</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">124</span>
+                            <span class="stat-label">Total Matches</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">4</span>
+                            <span class="stat-label">Weeks Remaining</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table class="standings-table" id="standingsTable">
+                    <thead>
+                        <tr>
+                            <th data-sort="rank" class="sortable">Rank <span class="sort-arrow">↕</span></th>
+                            <th data-sort="player" class="sortable">Player <span class="sort-arrow">↕</span></th>
+                            <th data-sort="wins" class="sortable">Wins <span class="sort-arrow">↕</span></th>
+                            <th data-sort="losses" class="sortable">Losses <span class="sort-arrow">↕</span></th>
+                            <th data-sort="draws" class="sortable">Draws <span class="sort-arrow">↕</span></th>
+                            <th data-sort="points" class="sortable active desc">Points <span class="sort-arrow">↓</span></th>
+                            <th data-sort="winrate" class="sortable">Win % <span class="sort-arrow">↕</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="rank-cell"><span class="rank-badge gold">1</span></td>
+                            <td class="player-cell">Sarah "Spellslinger" Chen</td>
+                            <td>16</td>
+                            <td>4</td>
+                            <td>0</td>
+                            <td class="points-cell"><strong>48</strong></td>
+                            <td class="winrate-cell">80.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell"><span class="rank-badge silver">2</span></td>
+                            <td class="player-cell">Marcus "The Tactician" Rivera</td>
+                            <td>15</td>
+                            <td>5</td>
+                            <td>0</td>
+                            <td class="points-cell"><strong>45</strong></td>
+                            <td class="winrate-cell">75.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell"><span class="rank-badge bronze">3</span></td>
+                            <td class="player-cell">Jordan "Midrange Master" Kim</td>
+                            <td>14</td>
+                            <td>6</td>
+                            <td>0</td>
+                            <td class="points-cell"><strong>42</strong></td>
+                            <td class="winrate-cell">70.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">4</td>
+                            <td class="player-cell">Alex "Combo King" Thompson</td>
+                            <td>13</td>
+                            <td>6</td>
+                            <td>1</td>
+                            <td class="points-cell"><strong>40</strong></td>
+                            <td class="winrate-cell">65.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">5</td>
+                            <td class="player-cell">Emma "Control Freak" Watson</td>
+                            <td>12</td>
+                            <td>7</td>
+                            <td>1</td>
+                            <td class="points-cell"><strong>37</strong></td>
+                            <td class="winrate-cell">60.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">6</td>
+                            <td class="player-cell">David "Aggro Dave" Lee</td>
+                            <td>11</td>
+                            <td>9</td>
+                            <td>0</td>
+                            <td class="points-cell"><strong>33</strong></td>
+                            <td class="winrate-cell">55.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">7</td>
+                            <td class="player-cell">Rachel "Reanimator" Brooks</td>
+                            <td>10</td>
+                            <td>9</td>
+                            <td>1</td>
+                            <td class="points-cell"><strong>31</strong></td>
+                            <td class="winrate-cell">50.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">8</td>
+                            <td class="player-cell">Chris "Tempo Turner" Martinez</td>
+                            <td>9</td>
+                            <td>11</td>
+                            <td>0</td>
+                            <td class="points-cell"><strong>27</strong></td>
+                            <td class="winrate-cell">45.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">9</td>
+                            <td class="player-cell">Jessica "Mill Master" Anderson</td>
+                            <td>7</td>
+                            <td>12</td>
+                            <td>1</td>
+                            <td class="points-cell"><strong>22</strong></td>
+                            <td class="winrate-cell">35.0%</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">10</td>
+                            <td class="player-cell">Tyler "Token Titan" Johnson</td>
+                            <td>5</td>
+                            <td>14</td>
+                            <td>1</td>
+                            <td class="points-cell"><strong>16</strong></td>
+                            <td class="winrate-cell">25.0%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box">
+                <h3>How Points are Calculated</h3>
+                <p>Players earn points based on their performance in league events:</p>
+                <ul>
+                    <li><strong>Win:</strong> 3 points</li>
+                    <li><strong>Draw:</strong> 1 point</li>
+                    <li><strong>Loss:</strong> 0 points</li>
+                    <li><strong>Event Participation Bonus:</strong> +1 point per event</li>
+                </ul>
+                <p>Click on any column header to sort the standings. The table is currently sorted by total points.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>9898-MTG League</h3>
+                <p>The premier Magic: The Gathering competitive league</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="standings.html">Standings</a></li>
+                    <li><a href="schedule.html">Schedule</a></li>
+                    <li><a href="rules.html">Rules</a></li>
+                    <li><a href="players.html">Players</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: league@9898mtg.com</p>
+                <p>Location: Game Haven, Downtown</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 9898-MTG League. Magic: The Gathering is © Wizards of the Coast.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
