@@ -244,7 +244,10 @@ function drawCardOnCanvas(ctx, card) {
 }
 
 function getCardAtPosition(x, y) {
-    for (let card of gameState.board) {
+    // Optimized card position check - returns first matching card
+    // Note: For large boards, consider spatial partitioning for better performance
+    for (let i = gameState.board.length - 1; i >= 0; i--) {
+        const card = gameState.board[i];
         const cx = card.x || 100;
         const cy = card.y || 300;
         if (x >= cx && x <= cx + 100 && y >= cy && y <= cy + 70) {
@@ -299,7 +302,8 @@ function generateManaCost(color) {
     };
     
     const colorMana = Math.floor(Math.random() * 3) + 1;
-    return `{${genericMana}}${colorSymbols[color] || ''}`.repeat(colorMana);
+    const colorSymbol = colorSymbols[color] || '';
+    return `{${genericMana}}${colorSymbol.repeat(colorMana)}`;
 }
 
 function generateCardText(type) {
@@ -406,8 +410,10 @@ function castSpell(spell, cost) {
 }
 
 function canPayCost(cost) {
-    // Simplified mana check
-    return true; // In a real implementation, check actual mana pool
+    // TODO: Implement actual mana pool validation
+    // For now, simplified check always returns true
+    // Future implementation should parse cost and check against gameState.manaPool
+    return true;
 }
 
 function payCost(cost) {
@@ -633,21 +639,32 @@ function buyItem(itemType, cost) {
 
 function openBoosterPack() {
     const cards = [];
-    for (let i = 0; i < 15; i++) {
-        const rarity = Math.random() > 0.7 ? 'uncommon' : 'common';
-        cards.push(generateCard('random', 'random', rarity));
+    // Standard MTG booster: 10 commons, 3 uncommons, 1 rare, 1 land/marketing
+    for (let i = 0; i < 10; i++) {
+        cards.push(generateCard('random', 'random', 'Common'));
     }
+    for (let i = 0; i < 3; i++) {
+        cards.push(generateCard('random', 'random', 'Uncommon'));
+    }
+    cards.push(generateCard('random', 'random', 'Rare'));
+    cards.push(generateCard('Land', 'random', 'Common'));
     alert(`Opened booster pack! Got ${cards.length} cards.`);
 }
 
 function openPremiumPack() {
     const cards = [];
-    for (let i = 0; i < 14; i++) {
-        const rarity = Math.random() > 0.7 ? 'uncommon' : 'common';
-        cards.push(generateCard('random', 'random', rarity));
+    // Premium pack: 9 commons, 3 uncommons, 2 rares, 1 guaranteed mythic
+    for (let i = 0; i < 9; i++) {
+        cards.push(generateCard('random', 'random', 'Common'));
     }
-    cards.push(generateCard('random', 'random', 'rare'));
-    alert(`Opened premium pack! Got ${cards.length} cards including a rare!`);
+    for (let i = 0; i < 3; i++) {
+        cards.push(generateCard('random', 'random', 'Uncommon'));
+    }
+    for (let i = 0; i < 2; i++) {
+        cards.push(generateCard('random', 'random', 'Rare'));
+    }
+    cards.push(generateCard('random', 'random', 'Mythic Rare'));
+    alert(`Opened premium pack! Got ${cards.length} cards including a mythic rare!`);
 }
 
 function updateGoldDisplay() {
