@@ -1,0 +1,266 @@
+/* Responsive Design */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-primary);
+        border-top: 1px solid var(--border-color);
+        flex-direction: column;
+        padding: var(--spacing-md);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        box-shadow: var(--shadow-lg);
+    }
+    
+    .nav-menu.active {
+        max-height: 500px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .overview-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .workflow-visualization {
+        grid-template-columns: 1fr;
+    }
+    
+    .doc-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .principles-list .principle-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .principle-number {
+        margin: 0 auto var(--spacing-md);
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .documentation-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .doc-sidebar {
+        position: static;
+        background-color: var(--bg-secondary);
+        padding: var(--spacing-md);
+        border-radius: var(--border-radius);
+    }
+    
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .theme-icon {
+        font-size: 1.25rem;
+    }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    
+    .hero-section {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+    
+    section {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+    }
+    
+    .overview-card {
+        padding: var(--spacing-lg);
+    }
+    
+    .card-icon {
+        font-size: 2.5rem;
+    }
+    
+    .workflow-phase {
+        padding: var(--spacing-lg);
+    }
+    
+    .phase-icon {
+        font-size: 1.75rem;
+    }
+    
+    .nav-brand h1 {
+        font-size: 1.25rem;
+    }
+    
+    .brand-subtitle {
+        font-size: 0.65rem;
+    }
+    
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .page-subtitle {
+        font-size: 1rem;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Desktop Large (1200px and above) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .overview-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .workflow-visualization {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Print Styles */
+@media print {
+    .theme-toggle,
+    .nav-toggle,
+    .hero-buttons,
+    .footer {
+        display: none;
+    }
+    
+    .header {
+        position: static;
+        border-bottom: 2px solid #000;
+    }
+    
+    body {
+        background-color: white;
+        color: black;
+    }
+    
+    a {
+        text-decoration: underline;
+    }
+    
+    .overview-card,
+    .workflow-phase,
+    .doc-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: #000;
+        --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        --shadow-md: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+        --shadow-lg: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+    }
+    
+    .btn {
+        border: 2px solid currentColor;
+    }
+}
+
+/* Focus Styles for Keyboard Navigation */
+a:focus,
+button:focus,
+.nav-link:focus,
+.btn:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .btn,
+    .nav-link,
+    .doc-link {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+    
+    .nav-link {
+        padding: var(--spacing-md);
+    }
+}
