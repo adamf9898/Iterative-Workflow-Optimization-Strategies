@@ -1,0 +1,31 @@
+{
+  "appName": "Iterative Workflow Optimization Strategies",
+  "version": "1.0.0",
+  "description": "A comprehensive framework for implementing modular, cyclical approaches to optimizing project workflows",
+  "author": "IWOS Contributors",
+  "repository": "https://github.com/adamf9898/Iterative-Workflow-Optimization-Strategies",
+  "theme": {
+    "defaultTheme": "light",
+    "enableThemeToggle": true,
+    "storageKey": "iwos-theme"
+  },
+  "navigation": {
+    "enableSmoothScroll": true,
+    "scrollOffset": 80,
+    "mobileBreakpoint": 768
+  },
+  "features": {
+    "animations": true,
+    "analyticsEnabled": false,
+    "searchEnabled": false
+  },
+  "api": {
+    "baseUrl": "/api",
+    "timeout": 5000
+  },
+  "ui": {
+    "showLoadingIndicators": true,
+    "enableNotifications": true,
+    "defaultLanguage": "en"
+  }
+}
